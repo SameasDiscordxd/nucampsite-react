@@ -1,18 +1,16 @@
-import CampsitesList from './features/campsites/CampsitesList';
-import './App.css';
 import Header from './components/Header';
-import FooterBar from './components/Footer';
-
-
+import Footer from './components/Footer';
+import CampsitesDirectoryPage from './pages/CampsitesDirectoryPage';
+import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-        <Header/>
-        <CampsitesList/>
-        <FooterBar/>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <Header />
+            <CampsitesDirectoryPage />
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
