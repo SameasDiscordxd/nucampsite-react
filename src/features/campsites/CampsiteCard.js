@@ -1,17 +1,20 @@
-import { Card, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
 const CampsiteCard = ({ campsite }) => {
-    const { image, name} = campsite;
-    return (
-    <Card>
-        //destructure campsite object
+  const { id, image, name } = campsite;
+
+  return (
+    <Link to={`${id}`}> {/* Use Link to wrap around content */}
+      <Card>
         <CardImg width="100%" src={image} alt={name} />
         <CardImgOverlay>
-            <CardTitle>{campsite.name}</CardTitle>
+          <CardTitle>{name}</CardTitle>
         </CardImgOverlay>
-    </Card>
-    );
-}
+      </Card>
+    </Link>
+  );
+};
 
-export default CampsiteCard
+export default CampsiteCard;
