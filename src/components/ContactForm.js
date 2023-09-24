@@ -2,6 +2,13 @@ import { Button, Label, Col, FormGroup } from "reactstrap";
 import { Formik, Field, Form } from "formik";
 
 const ContactForm = () => {
+
+    const handleSubmit = (values, {resetFrom}) => {
+        console.log('form values: ', values);
+        console.log('in JSON format: ', JSON.stringify(values));
+        resetFrom();
+    }
+
   return (
     <Formik
       initialValues={{
@@ -13,6 +20,7 @@ const ContactForm = () => {
         contactType: "By Phone",
         feedback: "",
       }}
+      onSubmit={handleSubmit}
     >
       <Form>
         {/* this is the input for the first name */}
@@ -53,7 +61,7 @@ const ContactForm = () => {
         </FormGroup>
         <FormGroup row>
           <Label check md={{ size: 4, offset: 2}}>
-            {/* this is the radio button */}
+            {/* this is the radio button🍆 */}
             <Field
                 name='agree'
                 type='checkbox'
@@ -78,7 +86,13 @@ const ContactForm = () => {
             <Field className='form-control' name='feedback' as='textarea' rows='12' />
           </Col>
         </FormGroup>
-        <FormGroup row></FormGroup>
+        <FormGroup row>
+        <Col md={{ size: 10, offset: 2 }}>
+                        <Button type='submit' color='primary'>
+                            Send Feedback
+                        </Button>
+                    </Col>
+        </FormGroup>
       </Form>
     </Formik>
   );
