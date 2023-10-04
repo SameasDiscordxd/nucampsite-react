@@ -9,9 +9,16 @@ import {
 } from "reactstrap";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validateCommentForm } from "../../utils/validateCommentForm";
+import { useDispatch } from "react-redux";
+import { addComment } from "./commentsSlice";
+
+
+
+
 
 const CommentForm = ({ campsiteId }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     const comment = {
@@ -19,8 +26,11 @@ const CommentForm = ({ campsiteId }) => {
       rating: values.rating,
       author: values.author,
       text: values.commentText,
+      date: new Date(Date.now()).toISOString()
     };
     console.log(comment);
+    dispatch(addComment(comment));
+    console.log('After dispatch addComment')
     setModalOpen(false);
   };
 
